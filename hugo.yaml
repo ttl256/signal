@@ -1,0 +1,41 @@
+baseURL: "https://signal.bit-void.org"
+title: "Signal from the Void"
+theme: ["PaperMod"]
+capitalizeListTitles: false
+
+params:
+  defaultTheme: auto
+  ShowReadingTime: false
+  ShowCodeCopyButtons: true
+  ShowPostNavLinks: true
+  ShowFullTextinRSS: true
+  label:
+    icon: "/images/logo.png"
+    iconHeight: 32
+  footer:
+    text: "[RSS](/index.xml)"
+
+menu:
+  main:
+    - identifier: posts
+      name: Posts
+      url: /posts/
+      weight: 10
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 20
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 30
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+services:
+  rss:
+    limit: 200
