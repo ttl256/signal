@@ -1,0 +1,43 @@
+{{- $src := .Get "src" -}}
+{{- $srcDark := .Get "srcDark" -}}
+{{- $link := .Get "link" -}}
+{{- $linkDark := .Get "linkDark" | default $link -}}
+{{- if and $srcDark (eq $link $src) -}}
+    {{- $linkDark = .Get "linkDark" | default $srcDark -}}
+{{- end -}}
+{{- $fragment := cond (eq (.Get "align") "center") "#center" "" -}}
+<figure{{ if or (.Get "class") (eq (.Get "align") "center") }} class="
+           {{- if eq (.Get "align") "center" }}align-center {{ end }}
+           {{- with .Get "class" }}{{ . }}{{- end }}"
+{{- end -}}>
+    {{- if $link -}}
+        <a href="{{ $link }}"
+            {{- if $srcDark }} data-link-light="{{ $link }}" data-link-dark="{{ $linkDark }}"{{ end }}
+            {{- with .Get "target" }} target="{{ . }}"{{ end }}
+            {{- with .Get "rel" }} rel="{{ . }}"{{ end }}>
+    {{- end }}
+    <img loading="lazy" src="{{ $src }}{{ $fragment }}"
+         {{- if $srcDark }} data-src-light="{{ $src }}{{ $fragment }}" data-src-dark="{{ $srcDark }}{{ $fragment }}"{{ end }}
+         {{- if or (.Get "alt") (.Get "caption") }}
+         alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
+         {{- end -}}
+         {{- with .Get "width" }} width="{{ . }}"{{ end -}}
+         {{- with .Get "height" }} height="{{ . }}"{{ end -}}
+    />
+    {{- if $link }}</a>{{ end -}}
+    {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
+        <figcaption>
+            {{ with (.Get "title") -}}
+                {{ . }}
+            {{- end -}}
+            {{- if or (.Get "caption") (.Get "attr") -}}<p>
+                {{- .Get "caption" | markdownify -}}
+                {{- with .Get "attrlink" }}
+                    <a href="{{ . }}">
+                {{- end -}}
+                {{- .Get "attr" | markdownify -}}
+                {{- if .Get "attrlink" }}</a>{{ end }}</p>
+            {{- end }}
+        </figcaption>
+    {{- end }}
+</figure>

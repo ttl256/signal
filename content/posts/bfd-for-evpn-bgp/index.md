@@ -14,8 +14,9 @@ Without BFD for EVPN BGP sessions, VTEPs might retain stale information until th
 Consider a 3-stage Clos fabric with leaves dual homed to spines. BGP in the underlay has redistributed a primary loopback for multihop BGP EVPN sessions and a VTEP IP for VXLAN tunnels. Spines share the same AS65100 and preserve EVPN next hop on eBGP sessions. leaf1 and leaf2 participate in a bridged overlay to allow host1 and host2 to communicate in a layer 2 domain.
 
 {{< figure
-  src="bfd-for-evpn-bgp-base-topology.svg"
-  link="bfd-for-evpn-bgp-base-topology.svg"
+  src="bfd-for-evpn-bgp-base-topology-light.svg"
+  srcDark="bfd-for-evpn-bgp-base-topology-dark.svg"
+  link="bfd-for-evpn-bgp-base-topology-light.svg"
   align="center"
 >}}
 
@@ -94,8 +95,9 @@ BGP routing table entry for mac-ip 02bb.bbbb.bbbb, Route Distinguisher: 2.2.2.2:
 One link failure creates an opportunity for stale state. In order to expose it, let's withdraw host2's route by shutting down the interface on leaf2.
 
 {{< figure
-  src="bfd-for-evpn-bgp-failure.svg"
-  link="bfd-for-evpn-bgp-failure.svg"
+  src="bfd-for-evpn-bgp-failure-light.svg"
+  srcDark="bfd-for-evpn-bgp-failure-dark.svg"
+  link="bfd-for-evpn-bgp-failure-light.svg"
   align="center"
 >}}
 
@@ -132,8 +134,9 @@ This may look harmless, since delivery is impossible regardless of the stale sta
 [^1]: Traffic still forwarded to leaf2 will be blackholed unless the local repair mechanism is in place
 
 {{< figure
-  src="bfd-for-evpn-bgp-extended.svg"
-  link="bfd-for-evpn-bgp-extended.svg"
+  src="bfd-for-evpn-bgp-extended-light.svg"
+  srcDark="bfd-for-evpn-bgp-extended-dark.svg"
+  link="bfd-for-evpn-bgp-extended-light.svg"
   align="center"
 >}}
 
