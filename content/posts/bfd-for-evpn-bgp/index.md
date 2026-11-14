@@ -15,6 +15,7 @@ Consider a 3-stage Clos fabric with leaves dual homed to spines. BGP in the unde
 
 {{< figure
   src="bfd-for-evpn-bgp-base-topology.svg"
+  link="bfd-for-evpn-bgp-base-topology.svg"
   align="center"
 >}}
 
@@ -94,6 +95,7 @@ One link failure creates an opportunity for stale state. In order to expose it, 
 
 {{< figure
   src="bfd-for-evpn-bgp-failure.svg"
+  link="bfd-for-evpn-bgp-failure.svg"
   align="center"
 >}}
 
@@ -131,6 +133,7 @@ This may look harmless, since delivery is impossible regardless of the stale sta
 
 {{< figure
   src="bfd-for-evpn-bgp-extended.svg"
+  link="bfd-for-evpn-bgp-extended.svg"
   align="center"
 >}}
 

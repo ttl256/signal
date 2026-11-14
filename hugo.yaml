@@ -10,7 +10,7 @@ params:
   ShowPostNavLinks: true
   ShowFullTextinRSS: true
   label:
-    icon: "/images/logo.png"
+    icon: "/images/logo-header.png"
     iconHeight: 32
   footer:
     text: "[RSS](/index.xml)"
